@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+# gotosleep
+# Sends the sleep command to Mac OS X after n seconds.
+# Author: John Kary <john@johnkary.net>
+# MIT License
+
+# Common Usage:
+#   Sleep in 30 min: sh gotosleep 1800
+#   Sleep in 60 min: sh gotosleep 3600
+
+USAGE="Usage: `basename $0` n"
+TIMEOUT=$1
+
+if [ ! -n "${TIMEOUT}" ]
+then
+	echo "You must provide how many seconds before sleepy time."
+	echo ${USAGE}
+	exit 1
+elif [ $TIMEOUT -lt 0 ]
+then
+    echo "Number of seconds must be greater than 0, homie."
+    exit 1
+fi
+
+MINUTES=`expr $TIMEOUT / 60`
+
+echo "Sleep sequence started. It's sleepy time in ${MINUTES} minutes! Nighty-night!"
+
+sleep $TIMEOUT
+osascript -e 'tell application "System Events" to sleep' >> /dev/null 2>&1
+
+echo "Good Night!"
+exit 0
