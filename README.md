@@ -11,6 +11,6 @@ Use as-is in checkout directory or copy to a directory in your $PATH such as /us
 ## Usage
 Call from the command line. The only argument is the number of seconds until you want the computer to automatically sleep.
 
-## Common Usage
+### Common Usage
     gotosleep 1800 #Invoke sleep in 30 minutes
     gotosleep 3600 #Invoke sleep in 60 minutes
