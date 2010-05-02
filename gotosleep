@@ -12,6 +12,7 @@
 USAGE="Usage: `basename $0` n"
 TIMEOUT=$1
 
+#Validate script arguments
 if [ ! -n "${TIMEOUT}" ]
 then
 	echo "You must provide how many seconds before sleepy time."
@@ -28,7 +29,7 @@ MINUTES=`expr $TIMEOUT / 60`
 echo "Sleep sequence started. It's sleepy time in ${MINUTES} minutes! Nighty-night!"
 
 sleep $TIMEOUT
-osascript -e 'tell application "System Events" to sleep' >> /dev/null 2>&1
+arch -i386 osascript -e 'tell application "System Events" to sleep'
 
 echo "Good Night!"
 exit 0
